@@ -16,7 +16,7 @@ poll.register(server_socket.fileno(), select.POLLIN) # 把server_socket文件号
 
 connections = {}
 while True:
-    events = poll.poll(10000) # 10 seconds
+    events = poll.poll(10000) # 10 seconds 在没有事件时 线程会在这里等待
     for fileno, event in events:
         if (fileno == server_socket.fileno()):
             (client_socket, client_address) = server_socket.accept()
